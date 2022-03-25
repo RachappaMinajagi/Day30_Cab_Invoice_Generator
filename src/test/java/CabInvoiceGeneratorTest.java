@@ -33,4 +33,16 @@ public class CabInvoiceGeneratorTest {
 		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3, 71);
 		Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
 	}
+	@Test
+    public void givenUserIdDistanceAndTimeShouldReturnInvoiceOfUser() {
+        Rule[] rides = {
+                (Rule) new Ride(2, 5),
+                (Rule) new Ride(3, 5),
+                new Ride(1, 1)
+        };
+        CabInvoiceGenerator fare;
+		InvoiceSummary invoiceSummary = fare.listOfRidesOfUniqueUserId(rides,"1");
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 36);
+        Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
+    }
 }

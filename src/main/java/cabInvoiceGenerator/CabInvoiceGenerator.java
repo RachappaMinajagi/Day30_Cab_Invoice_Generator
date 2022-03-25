@@ -4,6 +4,11 @@
  * Minimum Fare -RS.5
  * 
  *Step2:-The invoice generate should now take multiple rides,and calculate aggregate total for all.
+ *Step3:-The invoice generate should now Return the following as apart of invoice
+ *-Total Number of Rides
+ *-Total Fare
+ *-Average Fare Per Ride
+ *Step4:- Given User id,invoice service get the list of rides from the ride Repository,and returns the Invoice
  */
 
 package cabInvoiceGenerator;
@@ -44,8 +49,10 @@ public class CabInvoiceGenerator {
 		 */
 		return totalFare;
 	}
+
 	/**
 	 * Create a method invoiceSummaryCalculation
+	 * 
 	 * @param ridesArray
 	 * @return
 	 */
@@ -56,5 +63,21 @@ public class CabInvoiceGenerator {
 			totalFare += this.calculateFare(Rule.DEFAULT_ORDER, Rule.DEFAULT_ORDER);
 		}
 		return new InvoiceSummary(ridesArray.length, totalFare);
+	}
+
+	public InvoiceSummary listOfRidesOfUniqueUserId11(Rule[] ridesArray, String userID) {
+		double totalFare = 0;
+		int userRideCount = 0;
+		for (Rule ride : ridesArray) {
+//			if (((Object) ride).getUserID().equals(userID)) {
+//				totalFare += this.calculateFare(Rule.DEFAULT_ORDER, Rule.DEFAULT_ORDER);
+//				userRideCount++;
+//			}
+//		}
+		return new InvoiceSummary(userRideCount, totalFare);
+	}
+		return null;
+
+	
 	}
 }

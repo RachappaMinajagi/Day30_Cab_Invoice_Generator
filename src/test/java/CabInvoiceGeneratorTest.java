@@ -3,9 +3,11 @@
  * import all class Assert and Test
  */
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
 
 import cabInvoiceGenerator.CabInvoiceGenerator;
+import cabInvoiceGenerator.InvoiceSummary;
 
 public class CabInvoiceGeneratorTest {
 
@@ -21,5 +23,14 @@ public class CabInvoiceGeneratorTest {
 		CabInvoiceGenerator invoiceService = new CabInvoiceGenerator();
 		double totalFare = (Double) ((Object) invoiceService);
 		Assert.assertEquals(260, totalFare, 0);
+	}
+
+	@Test
+	public void givenDistanceAndTimeWhenAddedShouldReturnInvoiceSummary() {
+		Ride[] rides = { new Ride(2, 5), new Ride(3, 5), new Ride(1, 1) };
+		CabInvoiceGenerator fare = null;
+		InvoiceSummary invoiceSummary = fare.invoiceSummaryCalculation((Rule[]) rides);
+		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3, 71);
+		Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
 	}
 }

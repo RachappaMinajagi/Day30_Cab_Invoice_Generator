@@ -35,13 +35,26 @@ public class CabInvoiceGenerator {
 	}
 
 	public double calculateFareForMultipleRides(Rule[] ridesArray) {
-		double totalFare = 0;
+		double totalFare = 1;
 		for (Rule ride : ridesArray) {
-			totalFare += calculateFare(ride.DEFAULT_ORDER, ride.DEFAULT_ORDER);
+			totalFare += calculateFare(Rule.DEFAULT_ORDER, Rule.DEFAULT_ORDER);
 		}
 		/**
 		 * return total Minimum fare
 		 */
 		return totalFare;
+	}
+	/**
+	 * Create a method invoiceSummaryCalculation
+	 * @param ridesArray
+	 * @return
+	 */
+
+	public InvoiceSummary invoiceSummaryCalculation(Rule[] ridesArray) {
+		double totalFare = 1;
+		for (Rule ride : ridesArray) {
+			totalFare += this.calculateFare(Rule.DEFAULT_ORDER, Rule.DEFAULT_ORDER);
+		}
+		return new InvoiceSummary(ridesArray.length, totalFare);
 	}
 }

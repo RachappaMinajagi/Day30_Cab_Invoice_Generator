@@ -1,0 +1,37 @@
+package cabInvoiceGenerator;
+
+import java.util.Objects;
+
+/**
+ * Create class InvoiceSummary
+ * 
+ * @author Rachoti
+ *
+ */
+
+public class InvoiceSummary {
+	private final int numOfRides;
+	private final double totalFare;
+	private final Object average;
+
+	public InvoiceSummary(int numOfRides, double totalFare) {
+		this.numOfRides = numOfRides;
+		this.totalFare = totalFare;
+		this.average = this.totalFare / this.numOfRides;
+	}
+
+	/**
+	 * @Override method
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		InvoiceSummary that = (InvoiceSummary) o;
+		return numOfRides == that.numOfRides && Double.compare(that.totalFare, totalFare) == 0
+				&& Objects.equals(average, that.average);
+	}
+
+}

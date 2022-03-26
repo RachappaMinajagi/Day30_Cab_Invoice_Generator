@@ -4,6 +4,10 @@
  * Minimum Fare -RS.5
  * 
  *Step2:-The invoice generate should now take multiple rides,and calculate aggregate total for all.
+ *Step3:-The invoice generate should now Return the following as apart of invoice
+ *-Total Number of Rides
+ *-Total Fare
+ *-Average Fare Per Ride
  */
 
 package cabInvoiceGenerator;
